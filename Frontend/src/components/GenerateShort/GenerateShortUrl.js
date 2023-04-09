@@ -25,10 +25,10 @@ export default function GenerateShortUrl({setMessageData}) {
 
   return (
     <Stack margin={10} direction="column" justifyContent="center" alignItems="center" spacing={2} className="Operations">
-    <Input className="newTransaction-input" name={"originalUrl"} placeholder="Url" onChange={updateNewUrl} value={newUrl.originalUrl} />
+    <Input className="newTransaction-input" name={"originalUrl"} placeholder="Url" onChange={updateNewUrl} value={newUrl.originalUrl} fullWidth/>
 
     <Link to={'/'}>
-      <Button variant="contained" color="success" onClick={createShortUrl}> GenerateShortUrl </Button>
+      <Button variant="contained" color="success" onClick={createShortUrl}> Generate short url </Button>
     </Link>
 
   </Stack>

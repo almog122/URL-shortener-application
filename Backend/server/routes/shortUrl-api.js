@@ -27,10 +27,12 @@ router.get("/:id", function (req, res) {
     });
 });
 
-router.post("/shortUrl", function (req, res) {
+router.post("/shortUrl", async function (req, res) {
   const shortUrlData = req.body;
 
-  if(shortUrlUtil.validateUrl(shortUrlData.originalUrl)){
+  const isValidUrl = await shortUrlUtil.validateUrl(shortUrlData.originalUrl)
+
+  if(!isValidUrl){
     res.status(400).send({ message: `Failed to generate` });
     return
   }

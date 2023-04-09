@@ -4,7 +4,7 @@ import { AppBar, Box, Button, Container, Toolbar, Typography } from "@mui/materi
 import HttpIcon from '@mui/icons-material/Http';
 
 export default function Navbar() {
-  const navbarItems = ["Home", "make new short Url"];
+  const navbarItems = ["Home", "Make new short Url"];
   const links = ["/", "/generateShortUrl"];
 
   return (

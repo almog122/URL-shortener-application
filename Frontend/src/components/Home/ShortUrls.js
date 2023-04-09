@@ -30,7 +30,7 @@ export default function ShortUrls({setMessageData}) {
   const deleteShortUrl = function (id) {
     axios
       .delete(`${CONSTANTS.DELETE_SHORT_URL}/${id}`)
-      .then((respond) => {
+      .then(() => {
         setMessageData({message: "Successfully deleted" , severity: 'success'});
         setDeletedShortUrlsId(id);
       })
@@ -38,7 +38,6 @@ export default function ShortUrls({setMessageData}) {
         setMessageData({message: respond.message , severity: 'success'});
       });
   };
-
   return (
     <Stack marginTop={"30px"} direction="column" justifyContent="center" alignItems="center" spacing={2} divider={<Divider orientation="vertical" flexItem />}>
       {shortUrls.map((shortUrl) => (
