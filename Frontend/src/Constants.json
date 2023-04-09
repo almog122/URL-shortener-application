@@ -1,0 +1,5 @@
+{
+    "GET_SHORT_URLS": "http://localhost:4000/shortUrls",
+    "POST_SHORT_URL": "http://localhost:4000/shortUrl",
+    "DELETE_SHORT_URL": "http://localhost:4000/shortUrl"
+}
