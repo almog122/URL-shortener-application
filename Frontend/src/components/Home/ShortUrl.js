@@ -12,7 +12,7 @@ export default function ShortUrl({shortUrl , deleteShortUrl}) {
       </Grid>
 
       <Grid item xs={6}>
-        <Button variant="contained" color="error" onClick={() => deleteShortUrl(shortUrl._id)}> Delete </Button>
+        <Button variant="contained" color="error" onClick={() => deleteShortUrl(shortUrl.urlId)}> Delete </Button>
       </Grid>
     </Grid>
   )

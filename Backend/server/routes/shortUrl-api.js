@@ -1,4 +1,5 @@
 const express = require("express");
+const shortid = require("shortid");
 const ShortUrl = require("../model/shortUrlSchema");
 const shortUrlUtil = require("../utilities/shortUrl-util");
 
@@ -14,24 +15,43 @@ router.get("/shortUrls", function (req, res) {
     });
 });
 
+router.get("/:id", function (req, res) {
+  const id = req.params.id;
+
+  ShortUrl.findOne({urlId : id})
+    .then(function (shortUrl) {
+      res.redirect(shortUrl.originalUrl);
+    })
+    .catch(function () {
+      res.status(500).send({ message: "Internal Server Error" });
+    });
+});
+
 router.post("/shortUrl", function (req, res) {
-  let shortUrlData = req.body;
-  let shortUrlSchema = shortUrlUtil.getShortUrlSchema(shortUrlData);
+  const shortUrlData = req.body;
+
+  if(shortUrlUtil.validateUrl(shortUrlData.originalUrl)){
+    res.status(400).send({ message: `Failed to generate` });
+    return
+  }
+
+  const urlId = shortid.generate();
+  let shortUrlSchema = shortUrlUtil.getShortUrlSchema(shortUrlData , urlId);
 
   shortUrlSchema
     .save()
     .then(() => {
-      res.status(201).send({ message: `Successful transaction` });
+      res.status(201).send({ message: `Successful generated` });
     })
     .catch(() => {
-      res.status(400).send({ message: `Failed transaction` });
+      res.status(400).send({ message: `Failed to generate` });
     });
 });
 
 router.delete("/shortUrl/:id", function (req, res) {
-  let id = req.params.id;
+  const id = req.params.id;
 
-  Transaction.deleteOne({ _id: id })
+  ShortUrl.deleteOne({ urlId : id })
     .then((deleted) => {
       if (deleted.deletedCount === 1) {
         res.send({ message: `Successfully deleted from DB` });
