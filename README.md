@@ -1,3 +1,13 @@
+# Description
+
+Url shortener application that get url from the user and shorten it and make a QR code for the user to use
+
+## Images
+
+<p align="center"><img src="app-homepage.png" width="300" /></p>
+<p align="center"><img src="app-generateUrlPage.png" width="300" /></p>
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
