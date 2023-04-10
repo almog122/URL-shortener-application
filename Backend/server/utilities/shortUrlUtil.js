@@ -1,10 +1,20 @@
 const ShortUrl = require("../model/shortUrlSchema");
 const CONSTANTS = require('../config.js')
 
-async function validateUrl(newUrl) {
+const isShortUrlExist = async function(originalUrl){
+  let isExist = await ShortUrl.findOne({originalUrl : originalUrl})
+
+  if (isExist !== null) {
+    return true
+  } else{
+    return false
+  }
+}
+
+const isValidUrl = async function(originalUrl) {
   let givenURL ;
   try {
-      givenURL = new URL (newUrl);
+      givenURL = new URL (originalUrl);
   } catch (error) {
      return false; 
   }
@@ -26,4 +36,4 @@ const getShortUrlSchema = async function (shortUrlData , urlId) {
   return shortUrlSchema;
 };
 
-module.exports = { getShortUrlSchema , validateUrl };
+module.exports = { getShortUrlSchema , isValidUrl , isShortUrlExist};

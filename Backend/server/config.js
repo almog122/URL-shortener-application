@@ -5,7 +5,8 @@ const CONFIG = {
     SHORT_URL_BASE: 'http://localhost:4000',
     DOMAIN_LOGO_API_URL: 'http://visiting-rose-nightingale.faviconkit.com',
     DOMAIN_LOGO_API_SIZE: 256,
-    QR_CODE_URL : 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data='
+    QR_CODE_URL : 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=',
+    SERVER_ERROR_DB_CONNECTION: "Failed to connect to DB"
 }
 
 module.exports = CONFIG

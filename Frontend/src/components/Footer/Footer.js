@@ -3,5 +3,5 @@ import SnackbarAlerts from "./SnackbarAlerts"
 
 export default function Footer({messageData}) {
 
-  return <> <SnackbarAlerts messageData={messageData} /> </>;
+  return  <SnackbarAlerts messageData={messageData} /> ;
 }

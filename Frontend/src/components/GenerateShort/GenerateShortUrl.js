@@ -25,8 +25,8 @@ export default function GenerateShortUrl({updateMessageData}) {
 
   return (
     <Container>
-      <Stack margin={10} direction="column" justifyContent="center" alignItems="center" spacing={2} className="Operations">
-      <Input className="newTransaction-input" name={"originalUrl"} placeholder="Url" onChange={updateNewUrl} value={newUrl.originalUrl} fullWidth/>
+      <Stack margin={10} direction="column" justifyContent="center" alignItems="center" spacing={2}>
+      <Input className="newTransaction-input" name={"originalUrl"} placeholder="Example : https://github.com/" onChange={updateNewUrl} value={newUrl.originalUrl} fullWidth/>
 
       <Link to={'/'}>
         <Button variant="contained" color="success" onClick={createShortUrl}> Generate short url </Button>

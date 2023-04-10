@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const shortUrlApi = require("./server/routes/shortUrl-api");
-const databaseManager = require("./server/utilities/db-connection");
+const databaseManager = require("./server/utilities/databaseManager");
 const CONSTANTS = require("./server/config");
 
 const app = express();
