@@ -1,5 +1,5 @@
 const ShortUrl = require("../model/shortUrlSchema");
-const constants = require('../conifg')
+const CONSTANTS = require('../config.js')
 
 async function validateUrl(newUrl) {
   let givenURL ;
@@ -11,12 +11,16 @@ async function validateUrl(newUrl) {
   return true;
 }
 
-const getShortUrlSchema = function (shortUrlData , urlId) {
+const getShortUrlSchema = async function (shortUrlData , urlId) {
+
+  let domainUrl = new URL (shortUrlData.originalUrl);
 
   const shortUrlSchema = new ShortUrl({
     originalUrl : shortUrlData.originalUrl,
-    shortUrl : `${constants.SHORT_URL_BASE}/${urlId}`,
-    urlId : urlId
+    shortUrl : `${CONSTANTS.SHORT_URL_BASE}/${urlId}`,
+    urlId : urlId,
+    domainImg: `${CONSTANTS.DOMAIN_LOGO_API_URL}/${domainUrl.hostname}/${CONSTANTS.DOMAIN_LOGO_API_SIZE}`,
+    qrCode : `${CONSTANTS.QR_CODE_URL}/${domainUrl}`
   });
 
   return shortUrlSchema;

@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import CONSTANTS from "../../Constants.json";
 import { Link } from 'react-router-dom';
 
-export default function GenerateShortUrl({setMessageData}) {
+export default function GenerateShortUrl({updateMessageData}) {
 
     const [newUrl, setNewUrl] = useState({originalUrl: ""});
 
@@ -15,11 +15,11 @@ export default function GenerateShortUrl({setMessageData}) {
       function createShortUrl() {
         axios
           .post(CONSTANTS.POST_SHORT_URL, newUrl)
-          .then((respond)=>{
-            setMessageData({message : respond.data.message , severity: 'success'})
+          .then((response)=>{
+            updateMessageData(response.data.message , CONSTANTS.SEVERITY_SUCCESS)
           })
-          .catch((respond) => {
-            setMessageData({message : respond.message , severity: 'error'})
+          .catch(({response}) => {
+            updateMessageData(response.data.message , CONSTANTS.SEVERITY_ERROR);
           });
       }
 

@@ -9,6 +9,10 @@ function App() {
 
   const [messageData , setMessageData] = useState({message : "", severity : "success"})
 
+  const updateMessageData = function(message , severity) {
+    setMessageData({message: message, severity:severity })
+  }
+
   return (
     <>
 <Router>
@@ -16,8 +20,8 @@ function App() {
         <Header/>
       </>
       <Routes>
-        <Route path="/" element={<ShortUrls setMessageData={setMessageData}/>} />
-        <Route path="/generateShortUrl" element={<GenerateShortUrl setMessageData={setMessageData}/>} />
+        <Route path="/" element={<ShortUrls updateMessageData={updateMessageData}/>} />
+        <Route path="/generateShortUrl" element={<GenerateShortUrl updateMessageData={updateMessageData}/>} />
       </Routes>
       <>
         <Footer messageData={messageData}/>

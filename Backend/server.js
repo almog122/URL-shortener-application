@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const shortUrlApi = require("./server/routes/shortUrl-api");
 const databaseManager = require("./server/utilities/db-connection");
-const CONSTANTS = require("./server/constants");
+const CONSTANTS = require("./server/config");
 
 const app = express();
 app.use(bodyParser.json());
@@ -18,7 +18,11 @@ app.use(function (req, res, next) {
 
 app.use("/", shortUrlApi);
 
-databaseManager.connectToDb()
+try {
+  databaseManager.connectToDb()
+} catch (error) {
+  console.log('Failed to connect to database')
+}
 
 app.listen(CONSTANTS.PORT, function () {
   console.log(`Server running on ${CONSTANTS.PORT}`);

@@ -4,15 +4,15 @@ import CONSTANTS from "../../Constants.json";
 import {Divider, Stack } from "@mui/material";
 import ShortUrl from "./ShortUrl";
 
-export default function ShortUrls({setMessageData}) {
-  const [shortUrls, setShortUrls] = useState([]);
+export default function ShortUrls({updateMessageData}) {
+  const [shortUrlsData, setShortUrls] = useState([]);
   const [deletedShortUrlId, setDeletedShortUrlsId] = useState(0);
 
   async function getShortUrls() {
     return axios
       .get(CONSTANTS.GET_SHORT_URLS)
-      .then(function (shortUrls) {
-        return shortUrls.data;
+      .then(function (response) {
+        return response.data;
       })
       .catch(function (error) {
         console.log(error.message);
@@ -27,25 +27,27 @@ export default function ShortUrls({setMessageData}) {
     getShortUrlsData();
   }, [deletedShortUrlId]);
 
-  const deleteShortUrl = function (id) {
+  const clickOnDeleteButton = function (id) {
     axios
       .delete(`${CONSTANTS.DELETE_SHORT_URL}/${id}`)
       .then(() => {
-        setMessageData({message: "Successfully deleted" , severity: 'success'});
+        updateMessageData('Successfully deleted' , CONSTANTS.SEVERITY_SUCCESS);
         setDeletedShortUrlsId(id);
       })
-      .catch(function (respond) {
-        setMessageData({message: respond.message , severity: 'success'});
+      .catch(function ({response}) {
+        updateMessageData(response.data.message , CONSTANTS.SEVERITY_ERROR);
       });
   };
+
+  const clickOnCopyButton = function(shortUrl){
+    navigator.clipboard.writeText(shortUrl)
+    updateMessageData('Copied to clipboard' , CONSTANTS.SEVERITY_SUCCESS);
+  }
+
   return (
     <Stack marginTop={"30px"} direction="column" justifyContent="center" alignItems="center" spacing={2} divider={<Divider orientation="vertical" flexItem />}>
-      {shortUrls.map((shortUrl) => (
-        <ShortUrl
-          key={shortUrl.urlId}
-          shortUrl={shortUrl}
-          deleteShortUrl={deleteShortUrl}
-        />
+      {shortUrlsData.map((shortUrlData) => (
+        <ShortUrl key={shortUrlData.urlId} shortUrlData={shortUrlData} clickOnDeleteButton={clickOnDeleteButton} clickOnCopyButton={clickOnCopyButton}/>
       ))}
     </Stack >
   );
