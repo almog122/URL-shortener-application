@@ -14,8 +14,7 @@ function App() {
   }
 
   return (
-    <>
-<Router>
+    <Router>
       <>
         <Header/>
       </>
@@ -27,7 +26,6 @@ function App() {
         <Footer messageData={messageData}/>
       </>
     </Router>
-    </>
   );
 }
 

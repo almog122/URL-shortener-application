@@ -11,21 +11,21 @@ export default function ShortUrl({shortUrlData , clickOnDeleteButton , clickOnCo
   }
 
   return (
-    <Grid container direction={'row'} boxShadow={2} spacing={2} justifyContent="center" alignItems="center" width={'80%'}>
+    <Grid container direction={'row'} boxShadow={2} spacing={2} justifyContent="center" alignItems="center" maxWidth="md">
 
-      <Grid item xs={2}>
+      <Grid item xs={5}>
         <img width={20} height={20} src={shortUrlData.domainImg} alt=''/>
-        <Typography > {getDomainName()}</Typography>
+        <Typography display={'inline-block'}> {getDomainName()}</Typography>
       </Grid>
 
-      <Grid item xs={2}>
+      <Grid item xs={5}>
         <a href={`${shortUrlData.shortUrl}`} target='_blank' rel="noreferrer"> {CONSTANTS.SHORT_URL_lY}{shortUrlData.urlId} </a>
       </Grid>
 
-      <Grid item xs={2}>
+      <Grid item xs={5}>
         <img src={shortUrlData.qrCode} alt='' />
       </Grid>
-      <Grid item xs={2}>
+      <Grid item xs={5}>
         <Button variant="contained" color="error" onClick={() => clickOnDeleteButton(shortUrlData.urlId)}> Delete </Button>
         <Button variant="contained" onClick={() => clickOnCopyButton(shortUrlData.shortUrl)}>Copy</Button>
       </Grid>
