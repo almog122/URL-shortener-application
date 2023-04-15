@@ -16,6 +16,7 @@ export default function Navbar() {
           <Box  sx={{ flexGrow: 1, display: { xs: "none", md: "flex" , marginLeft: "10px" } }}>
             {navbarItems.map((item, index) => (
               <Link key={index} to={links[index]}>
+                {/*Todo need to add a component for button */}
                 <Button key={item}
                   sx={{border: '1px solid black', my: 2, color: "white", display: "block", 
                   "&:hover": {backgroundColor: "primary.main", opacity: [0.9, 0.8, 0.7]}, mx: 2}}

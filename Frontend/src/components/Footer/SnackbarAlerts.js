@@ -7,14 +7,14 @@ const Alert = forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
-export default function CustomizedSnackbars({messageData}) {
+export default function CustomizedSnackbars({notificationSnackbar}) {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    if(messageData.message !== ""){
+    if(notificationSnackbar.message !== ""){
       setOpen(true);
     }
-  } , [messageData])
+  } , [notificationSnackbar])
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
@@ -27,8 +27,8 @@ export default function CustomizedSnackbars({messageData}) {
   return (
     <Stack spacing={2}>        
         <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-            <Alert onClose={handleClose} severity={messageData.severity} sx={{ width: '100%' }}>
-              {messageData.message}
+            <Alert onClose={handleClose} severity={notificationSnackbar.severity} sx={{ width: '100%' }}>
+              {notificationSnackbar.message}
             </Alert>
         </Snackbar>
     </Stack>

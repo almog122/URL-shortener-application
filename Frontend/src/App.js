@@ -7,10 +7,10 @@ import GenerateShortUrl from './components/GenerateShort/GenerateShortUrl';
 
 function App() {
 
-  const [messageData , setMessageData] = useState({message : "", severity : "success"})
+  const [notificationSnackbar , setNotificationSnackbar] = useState({message : "", severity : "success"})
 
-  const updateMessageData = function(message , severity) {
-    setMessageData({message: message, severity:severity })
+  const updateNotificationSnackbar = function(message , severity) {
+    setNotificationSnackbar({message: message, severity:severity })
   }
 
   return (
@@ -19,11 +19,11 @@ function App() {
         <Header/>
       </>
       <Routes>
-        <Route path="/" element={<ShortUrls updateMessageData={updateMessageData}/>} />
-        <Route path="/generateShortUrl" element={<GenerateShortUrl updateMessageData={updateMessageData}/>} />
+        <Route path="/" element={<ShortUrls updateNotificationSnackbar={updateNotificationSnackbar}/>} />
+        <Route path="/generateShortUrl" element={<GenerateShortUrl updateNotificationSnackbar={updateNotificationSnackbar}/>} />
       </Routes>
       <>
-        <Footer messageData={messageData}/>
+        <Footer notificationSnackbar={notificationSnackbar}/>
       </>
     </Router>
   );

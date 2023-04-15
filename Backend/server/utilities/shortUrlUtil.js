@@ -4,11 +4,7 @@ const CONSTANTS = require('../config.js')
 const isShortUrlExist = async function(originalUrl){
   let isExist = await ShortUrl.findOne({originalUrl : originalUrl})
 
-  if (isExist !== null) {
-    return true
-  } else{
-    return false
-  }
+  return isExist !== null ? true : false
 }
 
 const isValidUrl = async function(originalUrl) {

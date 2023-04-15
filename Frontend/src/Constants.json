@@ -1,6 +1,6 @@
 {
     "GET_SHORT_URLS": "http://localhost:4000/shortUrls",
-    "GET_SHORT_URL": "http://localhost:4000",
+    "GET_SHORT_URL": "http://localhost:4000/shortUrl",
     "POST_SHORT_URL": "http://localhost:4000/shortUrl",
     "DELETE_SHORT_URL": "http://localhost:4000/shortUrl",
     "SHORT_URL_lY": "https://almog.ly/",

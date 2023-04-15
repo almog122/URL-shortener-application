@@ -1,7 +1,7 @@
 import React from "react";
 import SnackbarAlerts from "./SnackbarAlerts"
 
-export default function Footer({messageData}) {
+export default function Footer({notificationSnackbar}) {
 
-  return  <SnackbarAlerts messageData={messageData} /> ;
+  return  <SnackbarAlerts notificationSnackbar={notificationSnackbar} /> ;
 }

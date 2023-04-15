@@ -7,6 +7,9 @@ Url shortener application that get url from the user and shorten it and make a Q
 <p align="center"><img src="assets/app-homepage.png" width="300" /></p>
 <p align="center"><img src="assets/app-generateUrlPage.png" width="300" /></p>
 
+# Instruction
+
+
 
 # Getting Started with Create React App
 
