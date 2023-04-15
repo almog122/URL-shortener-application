@@ -7,9 +7,9 @@ Url shortener application that get url from the user and shorten it and make a Q
 <p align="center"><img src="assets/app-homepage.png" width="300" /></p>
 <p align="center"><img src="assets/app-generateUrlPage.png" width="300" /></p>
 
-# Instruction
+## Demo site
 
-
+https://url-shortener-fste.onrender.com/
 
 # Getting Started with Create React App
 
